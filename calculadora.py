@@ -4,7 +4,14 @@ expressao = ""
 
 def clicar(valor):
     global expressao
-    expressao += str(valor)
+    operadores = ["+", "-", "*", "/"]
+    if valor in operadores and expressao != "":
+        if expressao[-1] in operadores:
+            expressao = expressao[:-1] + str(valor)
+        else:
+            expressao += str(valor)
+    else:
+        expressao += str(valor)
     entrada.delete(0, tk.END)
     entrada.insert(0, expressao)
 
